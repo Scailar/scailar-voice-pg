@@ -1,0 +1,3 @@
+curl -X POST 'http://localhost:5503/dial' \
+     -H 'Content-Type: application/json'  \
+     -d '{"to":"+12345"}'

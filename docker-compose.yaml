@@ -1,0 +1,28 @@
+services:
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - '80:80'
+      - '5503:443'
+    environment:
+      DOMAINS: 'replace -> http://backend:5503'
+      STAGE: production # staging # local # 
+      WEBSOCKET: true
+    volumes:
+      - https-portal-data:/var/lib/https-portal
+    depends_on:
+      backend:
+        condition: service_started
+  backend:
+    build: .
+    # ports:
+    #   - "5503:5503"
+    env_file:
+      - .env
+    # command: bash -c "while true; do sleep 1000; done"
+    command: uvicorn main:app --host 0.0.0.0 --port 5503 --log-config empty_log_config.json
+    volumes:
+      - ./call_logs:/app/logs
+
+volumes:
+  https-portal-data: # Recommended, to avoid re-signing when upgrading HTTPS-PORTAL

@@ -1,0 +1,18 @@
+# This TOML configuration file contains settings related to the management of virtual environments.
+# It is structured with various sections, each responsible for specific aspects of virtual environment configuration.
+# The settings provided help in defining the behavior of virtual environment creation and its location relative to the project.
+
+[virtualenvs] 
+# The 'virtualenvs' section defines configuration related to virtual environments.
+
+# The 'create' setting indicates whether a new virtual environment should be created.
+# Type: boolean
+# If set to 'true', a virtual environment will be created if it does not already exist.
+create = true 
+
+# The 'in-project' setting determines whether the virtual environment will be created
+# inside the project directory.
+# Type: boolean
+# If set to 'true', the virtual environment will be created within the project's root directory, 
+# typically in a folder named '.venv' or similar.
+in-project = true
